@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast Msg-1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Toast Messeges</h1>
+        <div class="buttons">
+            <button onclick="generator(sMsg)" class="btn">Success</button>
+            <button onclick="generator(enMsg)" class="btn">Invalid</button>
+            <button onclick="generator(eMsg)" class="btn">Error</button>
+        </div>
+
+        <div class="toastMsg">
+            <!-- <p>success</p> -->
+        </div>
+    </div>
+
+    <script>
+        let sMsg = 'Succesfully Done'
+        let eMsg = 'error '
+        let enMsg = 'invalid text'
+        let toastMsg = document.querySelector('.toastMsg');           
+        let btn = document.querySelectorAll('.btn');
+        function generator(msg){
+            let div = document.createElement('div');
+            div.classList.add('innerDiv');
+            div.innerHTML = msg;
+            toastMsg.appendChild(div);
+            setTimeout(function(){
+                div.remove();
+            },2000)
+
+            if(msg.includes('error')){
+                div.classList.add('error');
+            }
+            if(msg.includes('invalid')){
+                div.classList.add('invalid');
+            }
+        }
+    </script>
+</body>
+</html>
